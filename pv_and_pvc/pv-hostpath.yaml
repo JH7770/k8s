@@ -6,7 +6,7 @@ spec:
   capacity:
     storage: 2Gi
   volumeMode: Filesystem
-  accessMode: 
+  accessModes: 
   - ReadWriteOnce
   storageClassName: manual
   persistentVolumeReclaimPolicy: Delete
