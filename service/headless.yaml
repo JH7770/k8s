@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: headless-service
+spec:
+  # type : ClusterIP이지만 clusterIP 필드: None으로 생성
+  type: ClusterIP
+  clusterIP: None
+  # 셀렉터 설정
+  selector:
+    app: nginx-for-svc
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80
