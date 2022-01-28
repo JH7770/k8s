@@ -1,0 +1,27 @@
+# replicaset-HorizontalPodAutoscaler.yaml
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: my-replicaset
+
+spec:
+  replicas: 2   # pod 2개 생성
+  selector:
+    matchLabels:
+      app: busy   
+      
+  template:
+    metadata:
+      labels:
+        app: busy
+    spec:
+      containers:
+      - image: mhmhm3/ubuntu-with-stress
+        name: hpa-container
+        command: ["stress", "-c", "1"] # stress를 이용해 cpu 부하를 줌
+        # 리소스 요구
+        resources:
+          requests:   
+            cpu: 100m
+          limits:
+            cpu: 100m
