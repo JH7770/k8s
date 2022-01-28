@@ -16,10 +16,8 @@ spec:
         app: busy
     spec:
       containers:
-      - image: mhmhm3/ubuntu_with_stress:1.0
+      - image: mhmhm3/use_ubuntu_with_stress:1.0
         name: hpa-container
-        command: ["stress"] # stress를 이용해 cpu 부하를 줌
-        args: ["-c", "1"]
         # 리소스 요구
         resources:
           requests:   
