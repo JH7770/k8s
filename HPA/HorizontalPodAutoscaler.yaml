@@ -1,0 +1,22 @@
+apiVersion: autoscaling/v2beta1
+kind: HorizontalPodAutoscaler # HPA
+metadata:
+  name: budy-hpa
+
+# HPA 스펙 설정
+spec:
+  minReplicas: 1   # 최소 레플리카 수
+  maxReplicas: 5   # 최대 레플리카 수
+
+  # 스케일 조건
+  metrics:
+  - resource:
+      name: cpu
+      targetAverageUtilization: 30  # CPU 사용량이 평균 30%인 경우 스케일
+    type: Resource
+
+  # 스케일할 레플리카셋
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: ReplicaSet
+    name: busy-replicaset

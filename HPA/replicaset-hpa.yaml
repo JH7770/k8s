@@ -1,4 +1,4 @@
-# replicaset-hpa.yaml
+# replicaset-HorizontalPodAutoscaler.yaml
 apiVersion: apps/v1
 kind: ReplicaSet
 metadata:
